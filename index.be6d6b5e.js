@@ -1,2 +1,0 @@
-!function(){var e=new Headers({"Content-Type":"application/json","x-api-key":"DEMO-API-KEY"});fetch("https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=100",{method:"GET",headers:e,redirect:"follow"}).then((function(e){return e.text()})).then((function(e){return console.log(e)})).catch((function(e){return console.log("error",e)}))}();
-//# sourceMappingURL=index.be6d6b5e.js.map
