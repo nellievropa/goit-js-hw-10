@@ -31,20 +31,27 @@
 //   .catch(error => console.log('error', error));
 
 const search = document.querySelector('.js-breed-select');
+const markup = document.querySelector('.cat-info');
 search.addEventListener('click', onSearchBreed);
 let storedBreeds = [];
 
 function onSearchBreed(evt) {
   evt.preventDefault();
-  console.log(evt.curenttarget.elemnts.value)
+  const { breed } = evt.curenttarget.breed.id.value;
+  fetchBreeds(breed.id.value)
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
+  console.log(breed.id)
 }
 
 function fetchBreeds() {
   const BASE_URL = 'https://api.thecatapi.com/v1';
   const API_KEY = 'live_z6eGqgD1UKta40zwjx9gIJFQe07jIJtgN9xqenG2iTX9aiF4AElDeCIQ3o4r162B';
 
-  return fetch(`${BASE_URL}/breeds?${API_KEY}/images/search`)
-    .then(response => {
+  return fetch(
+    `${BASE_URL}/breeds?${API_KEY}/images/search`
+  ).then(response => {
+    console.log(response.json())
       if (!response.ok) {
       throw new Error(response.statusText)
       }
@@ -52,6 +59,10 @@ function fetchBreeds() {
     })
   
  
+}
+
+function createMarkup(array) {
+  
 }
 
 fetchBreeds()
