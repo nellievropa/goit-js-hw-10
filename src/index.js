@@ -37,17 +37,35 @@ let storedBreeds = [];
 
 function onSearchBreed(evt) {
   evt.preventDefault();
+  // let storedBreeds = [];
   // const { breed } = evt.curenttarget.breed.id.value;
   fetchBreeds()
-    .then(storedBreeds => (option.innerHTML = createMarkup(data.name)))
+    .then(data => {
+      search = data.currentTarget.id;
+    //     for (let i = 0; i < search.length; i++) {
+    //   const breed = search[i];
+    //       // let option = document.createElement('option');
+
+    //   // if (!breed.image) continue
+     
+    //   //use the current array index
+    //   // option.value = i;
+    //   // option.innerHTML = `${breed.name}`;
+    //   // document.getElementById('breed_selector').appendChild(option);
+    // }
+        console.log(search)   
+    
+    })
     .catch(error => console.log(error));
-   console.log(storedBreeds)
+  
 }
 
 function fetchBreeds(id) {
   const BASE_URL = 'https://api.thecatapi.com/v1';
   const API_KEY = 'live_z6eGqgD1UKta40zwjx9gIJFQe07jIJtgN9xqenG2iTX9aiF4AElDeCIQ3o4r162B';
-
+// console.log(fetch(
+//     `${BASE_URL}/breeds?${API_KEY}&id=${id}`
+//   ))
   return fetch(
     `${BASE_URL}/breeds?${API_KEY}&id=${id}`
   ).then(response => {
@@ -62,9 +80,9 @@ function fetchBreeds(id) {
 }
 
 function createMarkup(array) {
-  return array.map(({ name  }) => `<option 
-  value="breed-name">${ name} 
-  </option>`).join('')
+  return array.map(({ name }) => `<option 
+  value="breed-name">${name} 
+  </option>`).join('');
 }
 
 // fetchBreeds()
