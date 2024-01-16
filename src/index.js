@@ -68,7 +68,7 @@ function fetchBreeds(id) {
 //     `${BASE_URL}/breeds?${API_KEY}&id=${id}`
 //   ))
   return fetch(
-    `${BASE_URL}/breeds?${API_KEY}&id=${id}`
+    `${BASE_URL}/breeds?${API_KEY}images/search`
   ).then(response => {
     console.log(response.json())
       if (!response.ok) {
@@ -76,7 +76,8 @@ function fetchBreeds(id) {
       }
     return response.json();
     
-    })
+  })
+    
  
 }
 
@@ -90,27 +91,27 @@ function createMarkup(array) {
   </option>`).join('');
 }
 
-fetchBreeds()
-  .then((data) => {
-    // data = data.filter(img=> img.image?.url!=null)
+// fetchBreeds()
+//   .then((data) => {
+//     // data = data.filter(img=> img.image?.url!=null)
    
-  storedBreeds = data.currentTarget.id;
+//   storedBreeds = data.currentTarget.id;
    
-    for (let i = 0; i < storedBreeds.length; i++) {
-      const breed = storedBreeds[i];
-      let option = document.createElement('option');
+//     for (let i = 0; i < storedBreeds.length; i++) {
+//       const breed = storedBreeds[i];
+//       let option = document.createElement('option');
      
-      //skip any breeds that don't have an image
-      if (!breed.image) continue
+//       //skip any breeds that don't have an image
+//       if (!breed.image) continue
      
-      //use the current array index
-      option.value = i;
-      option.innerHTML = `${breed.name}`;
-      document.getElementById('breed_selector').appendChild(option);
-    }
-    console.log(storedBreeds)
-  })
-  .catch(error => console.log(error));
+//       //use the current array index
+//       option.value = i;
+//       option.innerHTML = `${breed.name}`;
+//       document.getElementById('breed_selector').appendChild(option);
+//     }
+//     console.log(storedBreeds)
+//   })
+//   .catch(error => console.log(error));
 
 
 
